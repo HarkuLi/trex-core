@@ -161,6 +161,14 @@ CTRexExtendedDriverDb::CTRexExtendedDriverDb() {
 
     /* raw socket */
     register_driver(std::string("net_af_packet"), CTRexExtendedDriverAfPacket::create);
+    /**
+     * TODO: Create an individual extended driver class for `net_af_xdp`.
+     * Note that its
+     * `CTRexExtendedDriverBase::is_support_for_rx_scatter_gather()` must return
+     * true, or an error will occur. See
+     * https://github.com/pktgen/Pktgen-DPDK/issues/97 for more details.
+     */
+    register_driver(std::string("net_af_xdp"), CTRexExtendedDriverAzure::create);
     register_driver(std::string("net_memif"),CTRexExtendedDriverMemif::create);
     register_driver(std::string("net_tap"),CTRexExtendedDriverAfPacket::create);
     register_driver(std::string("net_failsafe"),CTRexExtendedDriverAzure::create);

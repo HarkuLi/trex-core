@@ -1369,6 +1369,9 @@ dpdk_src_x86_64 = SrcGroup(dir='src/dpdk/',
                  #af_packet
                  'drivers/net/af_packet/rte_eth_af_packet.c',
 
+                 #af_xdp
+                 'drivers/net/af_xdp/rte_eth_af_xdp.c',
+
                 #  #Amazone ENA
                  'drivers/net/ena/ena_ethdev.c',
                  'drivers/net/ena/ena_rss.c',
@@ -2138,6 +2141,7 @@ dpdk_includes_path =''' ../src/
                         ../src/dpdk/drivers/net/mlx5/linux/
                         ../src/dpdk/drivers/net/
                         ../src/dpdk/drivers/net/af_packet/
+                        ../src/dpdk/drivers/net/af_xdp/
                         ../src/dpdk/drivers/net/tap/
                         ../src/dpdk/drivers/net/failsafe/
                         ../src/dpdk/drivers/net/vdev_netvsc/
@@ -2701,7 +2705,7 @@ def build_prog (bld, build_obj):
                 includes =inc_path + tcp_includes_path,
                 cxxflags = ( cxxflags + ['-std=gnu++11']),
                 linkflags = linkflags ,
-                lib=['pthread','dl', 'z'] + lib_ext,
+                lib=['pthread','dl', 'z', 'bpf'] + lib_ext,
                 use =[build_obj.get_dpdk_target(), build_obj.get_bpf_target(), 'zmq', build_obj.get_tcp_target()],
                 source = bp.file_list(top) + debug_file_list,
                 rpath = rpath_linkage,

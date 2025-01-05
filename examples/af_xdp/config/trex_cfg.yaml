@@ -1,0 +1,11 @@
+- version: 2
+  interfaces: ['--vdev=net_af_xdp0,iface=eth0', 'dummy', '--vdev=net_af_xdp1,iface=eth1', 'dummy']
+  port_info:
+      - dest_mac: 00:00:00:00:00:02 # MAC OF LOOPBACK TO IT'S DUAL INTERFACE
+        src_mac:  00:00:00:00:00:01
+      - dest_mac: 00:00:00:00:00:01 # MAC OF LOOPBACK TO IT'S DUAL INTERFACE
+        src_mac:  00:00:00:00:00:02
+      - dest_mac: 00:00:00:00:00:04 # MAC OF LOOPBACK TO IT'S DUAL INTERFACE
+        src_mac:  00:00:00:00:00:03
+      - dest_mac: 00:00:00:00:00:03 # MAC OF LOOPBACK TO IT'S DUAL INTERFACE
+        src_mac:  00:00:00:00:00:04

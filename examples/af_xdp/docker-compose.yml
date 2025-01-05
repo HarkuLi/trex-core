@@ -1,0 +1,30 @@
+services:
+  trex:
+    build: .
+    image: harku/trex:3.06
+    init: true
+    privileged: true
+    networks:
+      net_1:
+        ipv4_address: 192.168.100.2
+      net_2:
+        ipv4_address: 192.168.101.2
+    volumes:
+      - /dev/hugepages:/dev/hugepages
+      - ./config:/etc/trex
+    command:
+      - -i
+      - --cfg
+      - /etc/trex/trex_cfg.yaml
+
+networks:
+  net_1:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24
+  net_2:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.101.0/24

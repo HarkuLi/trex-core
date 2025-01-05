@@ -9,6 +9,10 @@ Realistic and Stateful traffic generators are needed in order to:
 * Test and provide more realistic performance numbers
 * Design and architecture of SW and HW based on realistic use cases
 
+=== AF_XDP PMD Support
+
+See link:./examples/af_xdp[examples/af_xdp] for the usage example.
+
 === Current Challenges
 
 * *Cost*: Commercial State-full traffic generators are expensive
